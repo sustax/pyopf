@@ -4,6 +4,7 @@ from urllib import parse
 
 import numpy as np
 import pygltflib
+from ..util import to_uri_reference
 
 
 def gl_to_numpy_type(gl_code: int) -> type:
@@ -271,6 +272,5 @@ def add_buffers(gltf: pygltflib.GLTF2, buffers: dict[Path, Buffer], base_path: P
     for buffer in buffers.values():
         if buffer.filepath is None:
             raise ValueError("The buffer is not a memory mapped file")
-        relative_path = os.path.relpath(buffer.filepath, start=base_path)
-        uri = parse.quote(str(relative_path))
+        uri = to_uri_reference(buffer.filepath, base_path)
         gltf.buffers.append(pygltflib.Buffer(byteLength=len(buffer), uri=uri))

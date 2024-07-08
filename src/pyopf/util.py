@@ -1,8 +1,10 @@
+import os
 from enum import Enum
 from types import UnionType
 from typing import Any, Callable, Dict, List, Optional, Type, TypeVar, cast
 
 import numpy as np
+from urllib.parse import quote
 
 from pyopf.uid64 import Uid64
 
@@ -117,3 +119,10 @@ def from_extensions(x: Any) -> Optional[Dict[str, Dict[str, Any]]]:
     return from_union(
         [lambda x: from_dict(lambda x: from_dict(lambda x: x, x), x), from_none], x
     )
+
+def to_uri_reference(path, base_path) -> str:
+    if base_path:
+        relative_path = os.path.relpath(path, start=base_path)
+        return quote(str(relative_path).replace(os.sep, "/"))
+    else:
+        return path.as_uri()

@@ -15,13 +15,7 @@ from ..project import (
     ProjectResource,
 )
 from ..types import CoreFormat
-
-
-def to_uri_reference(path, base_path) -> str:
-    if base_path:
-        return quote(str(path.relative_to(base_path)).replace(os.sep, "/"))
-    else:
-        return path.as_uri()
+from ..util import to_uri_reference
 
 
 def _is_core_json_object(obj: Any):
