@@ -1,0 +1,45 @@
+package:
+  name: pyopf
+  version: 1.2.0
+
+about:
+  home: https://pix4d.github.io/opf-spec/specification/project.html
+  license: Apache-2.0
+  summary: Python library for I/O and manipulation of projects under the Open Photogrammetry
+    Format (OPF)
+
+build:
+  script: '{{ PYTHON }} -m pip install . -vv'
+
+source:
+  path: .
+
+requirements:
+  host:
+  - python
+  - pip
+
+  run:
+  - python
+  - certifi
+  - colorama
+  - dataclasses-json
+  - deprecated
+  - laspy
+  - marshmallow
+  - marshmallow-enum
+  - mypy-extensions
+  - numpy
+  - packaging
+  - pillow
+  - plyfile
+  - pygltflib
+  - pyproj
+  - python-dateutil
+  - shapely
+  - simplejson
+  - six
+  - tqdm
+  - typing-extensions
+  - typing-inspect
+  - wrapt

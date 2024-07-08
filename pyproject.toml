@@ -1,21 +1,17 @@
 [build-system]
-requires = [
-    "poetry-core>=1.0.0",
-]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pyopf"
 version = "1.2.0"
-description = "Python library for I/O and manipulation of projects under the Open Photogrammetry Format (OPF)"
-authors = [
-    "Pix4D",
-]
+description = "Python library for I/O and manipulation of projects under the Open Photogrammetry Format (OPF) and it is a custom beta build for Python 3.12 due to the sub-dependency to pyproj"
+authors = ["Pix4D"]
 license = "Apache-2.0"
 readme = "README.md"
 packages = [
     { include = "pyopf", from = "src" },
-    { include = "opf_tools", from = "src" },
+    { include = "opf_tools", from = "src" }
 ]
 homepage = "https://pix4d.github.io/opf-spec/specification/project.html"
 classifiers = [
@@ -23,12 +19,14 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
-    "Development Status :: 5 - Production/Stable",
-    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent"
 ]
 keywords = [
     "photogrammetry",
-    "OPF",
+    "OPF"
 ]
 
 [tool.poetry.dependencies]
@@ -40,9 +38,9 @@ python-dateutil = "*"
 simplejson = "*"
 pillow = "~10"
 tqdm = "^4.65.0"
-laspy = "2.4.1"
-pyproj = "3.6.0"
-plyfile = "0.9"
+laspy = "^2.5.1"
+pyproj = "3.6.1"
+plyfile = "^1.0"
 
 [tool.poetry.scripts]
 opf_crop = "opf_tools.crop.cropper:main"
